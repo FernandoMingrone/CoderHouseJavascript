@@ -1,13 +1,3 @@
-    //desafío 1
-
-    // let nombre = prompt("Ingrese su nombre");
-    // let apellido = prompt("Ingrese su apellido");
-
-    // alert("Hola " + nombre + " " + apellido + "!");
-    
-    //desafío 2
-
-
 let numero = prompt("adivine que numero es del 1 al 20");
 
 numeroEntero = parseInt(numero);
@@ -30,7 +20,3 @@ else if (numeroEntero <= 9 && numeroEntero >= 5 || numeroEntero <= 15 && numeroE
 else {
     alert("debe ser un numero")
 };
-
-// else if (numero !== typeof(Number)) {
-//     alert("debe ser un numero")
-// }
