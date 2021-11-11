@@ -1,39 +1,38 @@
-// const monedaInicial = prompt("Que divisa tiene?")
 
-// const monedaDeseada = prompt("Que divisa desea?")
-
-
-const compra_venta = prompt ("Elegir compra o venta de dolares");
+const compra_venta = prompt("Elegir compra o venta de dolares");
 
 
-const dolarCantidad = () => prompt("Cuantos dolares?");
+const dolarCantidad = prompt("Cuantos dolares desea cambiar?")
 
 
-
-const valorDolarVenta = 205;
-const valorDolarCompra = 201;
-
-function deDolarApesosCompra(dolarCantidad){
-  return dolarCantidad * valorDolarVenta
+if (compra_venta == "compra" || compra_venta == "venta") { 
+    comprarVender();
+} else { 
+    prompt("Elegir compra o venta de dolares");
 };
 
-function deDolarApesosVenta(dolarCantitdad){
-    return dolarCantidad * valorDolarCompra
+
+function deDolarApesosCompra(dolarCantidad){
+    const valorDolarVenta = 205;
+    return dolarCantidad * valorDolarVenta;
+};
+
+function deDolarApesosVenta(dolarCantidad){
+    const valorDolarCompra = 201;
+    return dolarCantidad * valorDolarCompra;
 };
 
 function comprarVender() {
+
     if (compra_venta == "compra") {
-        dolarCantidad();
         deDolarApesosCompra(dolarCantidad);
+        return alert("Usted ingresó la cantidad de"+ " " +dolarCantidad + " " + "dolares, que son iguales a " + deDolarApesosCompra(dolarCantidad)+ " " + "pesos" );
         
-    } else {
-        deDolarApesosVenta(dolarCantitdad)
+    } else if (compra_venta == "venta") {
+        deDolarApesosVenta(dolarCantidad)
+        return alert("Usted ingresó la cantidad de"+ " " + dolarCantidad + " " + "dolares, que son iguales a " + deDolarApesosVenta(dolarCantidad)+ " " + "pesos" );
+} else { 
+    prompt("Elegir compra o venta de dolares");
 }
 
-return alert("Usted ingresó la cantidad de"+ " " +dolarCantidad + " " + "dolares, que son iguales a " + deDolarApesosCompra(dolarCantidad)+ " " + "pesos" );
-    }
-
-
-// function MonedaInicial(MonedaDeseada) {
-//     return MonedaDeseada 
-// }
+    };
