@@ -24,11 +24,11 @@ class PedidoDePropiedad {
         //this.estado = estado;
     }
     
-    entregarPropiedades() {
-        if (this.tipoDeOperacion === "Compra") {
-            alert("Le podemos ofrecer un" + + "en " + this.ubicacion + "que cuesta " + this.precio + "$");
-        }
-    }
+    // entregarPropiedades() {
+    //     if (this.tipoDeOperacion === "Compra") {
+    //         alert("Le podemos ofrecer un" + + "en " + this.ubicacion + "que cuesta " + this.precio + "$");
+    //     }
+    // }
 }
 
 
