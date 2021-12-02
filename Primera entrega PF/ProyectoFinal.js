@@ -80,7 +80,25 @@ if (busqueda1 === undefined) {
 console.log(busqueda1);
 
 
+const title = document.getElementById("title");
+const propiedadesDom = document.getElementById("propiedades");
 
+title.innerHTML = "Prodigy House - Venta y Alquiler de Propiedades";
+
+let = ( id= 1, propiedad= "Casa", ubicacion= "Almagro", precio= 150000, tipoDeOperacion= "Compra", estado= "Disponible" );
+
+let contenedor = document.createElement("div");
+
+contenedor.innerHTML = `<h3>${id}</h3>
+<p>${propiedad}</p>
+<p>${ubicacion}</p>
+<p>${precio}</p>
+<p>${tipoDeOperacion}</p>
+<p>${estado}</p>`;
+
+
+
+document.body.appendChild(contenedor);
 
 
 
