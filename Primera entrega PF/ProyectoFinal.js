@@ -43,8 +43,8 @@ class Propiedad {
     }
 }
 
-const propiedad1 = new Propiedad("Compra", "Casa", "Almagro", "150000");
-const propiedad2 = new Propiedad("Alquiler", "PH", "Villa Urquiza", "20000");
+const propiedad1 = new Propiedad("Compra", "Casa", "Almagro", "$150000");
+const propiedad2 = new Propiedad("Alquiler", "PH", "Villa Urquiza", "$20000");
 
 let propiedades = [];
 propiedades.push(propiedad1, propiedad2);
@@ -55,7 +55,7 @@ propiedades.push(propiedad1, propiedad2);
 let pedido1 = new PedidoDePropiedad({tipoDeOperacion: ""});
 
 //1) el cliente me pida lo que quiere
-pedido1.tipoDeOperacion = prompt("¿Qué tipo de operación desea realizar? (Compra o Alquiler)");
+// pedido1.tipoDeOperacion = prompt("¿Qué tipo de operación desea realizar? (Compra o Alquiler)");
 
 
 
@@ -65,47 +65,57 @@ pedido1.tipoDeOperacion = prompt("¿Qué tipo de operación desea realizar? (Com
 console.log(propiedades);
 
 //4) Compararlo con las propiedades que tengo
-busqueda1 = propiedades.find(elemento => elemento.tipoDeOperacion === pedido1.tipoDeOperacion);
+let busqueda1 = propiedades.find(elemento => elemento.tipoDeOperacion === pedido1.tipoDeOperacion);
 
 //5) Ofrecer las propiedades que mejor se ajusten
 //6) Si no tengo la propiedad que quiere, le aviso que no la tengo
-
-if (busqueda1 === undefined) {
-    alert("No tenemos la propiedad que busca");
-} else if (busqueda1.tipoDeOperacion === pedido1.tipoDeOperacion) {
-    alert("Le podemos ofrecer una " + busqueda1.tipoDePropiedad + " en " + busqueda1.ubicacion + " que cuesta " + busqueda1.precio + "$");
-}
-    
-
-console.log(busqueda1);
-
-
-const title = document.getElementById("title");
 const propiedadesDom = document.getElementById("propiedades");
 
+
+// if (busqueda1 === undefined) {
+//      propiedadesDom.innerHTML += `<p>No disponemos de la propiedadx</p>
+// } else if (busqueda1.tipoDeOperacion === pedido1.tipoDeOperacion) {
+//     propiedadesDom.innerHTML += `<div class="prueba">
+//     <h3>${busqueda1.tipoDeOperacion}</h3>
+// <p>${busqueda1.tipoDePropiedad}</p>
+// <p>${busqueda1.ubicacion}</p>
+// <p>${busqueda1.precio}</p>
+//     </div>`;
+// }
+
+
+let title = document.getElementById("title");
+let imagenCasa = document.getElementById("imgPropiedad")
+
 title.innerHTML = "Prodigy House - Venta y Alquiler de Propiedades";
-
-let = ( id= 1, propiedad= "Casa", ubicacion= "Almagro", precio= 150000, tipoDeOperacion= "Compra", estado= "Disponible" );
-
-let contenedor = document.createElement("div");
-
-contenedor.innerHTML = `<h3>${id}</h3>
-<p>${propiedad}</p>
-<p>${ubicacion}</p>
-<p>${precio}</p>
-<p>${tipoDeOperacion}</p>
-<p>${estado}</p>`;
+imagenCasa.innerHTML += `<img src="./images/todd-kent-178j8tJrNlc-unsplash.jpg" style= "width: 10em">`
 
 
-
-document.body.appendChild(contenedor);
+// let = ( id= 1, propiedad= "Casa", ubicacion= "Almagro", precio= 150000, tipoDeOperacion= "Compra", estado= "Disponible" );
 
 
 
 
 
 
+    // alert("Le podemos ofrecer una " + busqueda1.tipoDePropiedad + " en " + busqueda1.ubicacion + " que cuesta " + busqueda1.precio + "$");
+let pedido = []
 
+let datosForm = document.getElementById("formDatos")
+let apellido = document.getElementById("input-apellido")
+ let operacion = document.getElementById("input-operacion")
+
+
+formDatos.addEventListener("submit", (e) => {
+    e.preventDefault();
+    let datosForm = new FormData(e.target);
+    console.log(datosForm.get("nombre"))
+    console.log(datosForm.get("apellido"))
+    console.log(datosForm.get("operacion"))
+    let nuevoPedido = new PedidoDePropiedad(datosForm.get("operacion"))
+    console.log(nuevoPedido)
+
+})
 
 
 

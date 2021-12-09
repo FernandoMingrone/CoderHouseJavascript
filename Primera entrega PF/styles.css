@@ -13,20 +13,32 @@ h1 {
   height: 17vh;
 }
 
-section {
+#hero {
   display: flex;
+  flex-direction: column;
   justify-content: center;
-  align-items: start;
+  align-items: center;
   background-color: #e0dfd5;
-  height: 73vh;
-  background-image: url("./images/todd-kent-178j8tJrNlc-unsplash.jpg");
-  background-size: contain;
-  background-position: center;
-  background-repeat: no-repeat;
+  height: 60em;
+  padding-top: 2em;
+  height: fit-content;
 }
+
+.img {
+  height: 25em;
+}
+
 .desc {
   font-size: 1.5em;
   padding: 5rem;
+}
+
+.footer {
+  height: 20vh;
+  background-color: #313638;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .footer-text {
@@ -35,4 +47,48 @@ section {
   align-items: center;
   height: 10vh;
   font-size: 1.5em;
+  color: white;
+}
+
+#propiedades {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 4em;
+  padding: 2em;
+  background-color: #f5f5f5;
+}
+
+.prueba {
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2em;
+}
+
+#formDatos {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.input {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 1em;
+}
+
+.form-label {
+  padding-bottom: 1em;
+}
+
+.buttonSubmit {
+  border-radius: 15px;
+  padding: 0.5em;
+  color: white;
+  background-color: #313638;
+  margin: 1em 0 3em 0;
 }
