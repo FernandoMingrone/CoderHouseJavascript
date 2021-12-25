@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+    <div>
+        <h1 id="title">Prodigy House</h1>
+    </div>
+    <section id="hero">
+
+        <img class="img" src="./images/happy.jpg" alt="business">
+        <div class="input_container">
+            <form id="formDatos">
+                
+                <div class="input">
+                    <label for="operacion" class="form-label">Quiere Comprar o Alquilar?</label>
+                    <input type="text" class="form-input" id="input-operacion" name="operacion">
+                </div>
+                <div class="input">
+                    <label for="tipoDePropiedad" class="form-label">Tipo de propiedad</label>
+                    <input type="text" class="form-input" id="input-tipo" name="tipoDePropiedad">
+                </div>
+                <div class="input">
+                    <label for="ubicacion" class="form-label">Ubicación</label>
+                    <input type="text" class="form-input" id="input-ubicacion" name="ubicacion">
+                </div>
+                <div class="btnContenedor">
+                    <button type="submit" class="buttonSubmit btn1">Aceptar</button>
+                </div>
+            </form>
+        </div>
+        <button class="buttonSubmit btn2" id="btn-propiedades">Mostrar Propiedades</button> 
+    </section>
+    <div class="contenedorCards" id="divMostrarPropiedades"></div>
+    <p id="mensaje"></p>
+    <div id="propiedades">
+        <div id="imgPropiedad"></div>
+    </div>
+
+        <footer class="footer">
+            <p class="footer-text">Prodigy House &copy; 2021</p>
+        </footer>
+        <script src="./SegundaEntregaPF.js"></script>
+    </body>
+    </html>

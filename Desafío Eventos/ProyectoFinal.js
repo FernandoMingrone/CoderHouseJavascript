@@ -62,7 +62,6 @@ let pedido1 = new PedidoDePropiedad({tipoDeOperacion: ""});
 
 
 
-console.log(propiedades);
 
 //4) Compararlo con las propiedades que tengo
 let busqueda1 = propiedades.find(elemento => elemento.tipoDeOperacion === pedido1.tipoDeOperacion);
@@ -99,7 +98,7 @@ imagenCasa.innerHTML += `<img src="./images/todd-kent-178j8tJrNlc-unsplash.jpg" 
 
 
     // alert("Le podemos ofrecer una " + busqueda1.tipoDePropiedad + " en " + busqueda1.ubicacion + " que cuesta " + busqueda1.precio + "$");
-let pedido = []
+let pedidos = []
 
 let datosForm = document.getElementById("formDatos")
 let apellido = document.getElementById("input-apellido")
@@ -114,6 +113,9 @@ formDatos.addEventListener("submit", (e) => {
     console.log(datosForm.get("operacion"))
     let nuevoPedido = new PedidoDePropiedad(datosForm.get("operacion"))
     console.log(nuevoPedido)
+    pedidos.push(nuevoPedido);
+    console.log(pedidos)
+
 
 })
 
