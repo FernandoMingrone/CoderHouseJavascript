@@ -62,16 +62,22 @@ $(() => {
         let propiedadesEnStorage = JSON.parse(localStorage.getItem("keyPedidos"))
         if(divPropiedades.children.length == 0 ) {
         
+
+            //LA IDEA SERÍA FILTRAR Y MOSTRAR LAS PROPIEDADES
+            //BUSCADAS SEGÚN LOS DATOS INGRESADOS
+            //POR AHORA NO LO PUDE HACER ASI QUE ESTOY MOSTRANDO LOS DATOS INGRESADOS
             propiedadesEnStorage.forEach((propiedadesEnArray, indice) => {
-                divPropiedades.innerHTML += `
-                <div class="card" id="propiedad${indice}">
-                    <div class="cardBody">
-                    <h5 class="cardText">${propiedadesEnArray.tipoDeOperacion}</h5>
-                        <h5 class="cardText">${propiedadesEnArray.tipoDePropiedad}</h5>
-                        <p class="cardText">${propiedadesEnArray.ubicacion}</p>
-                        <button type="button" class="btnCard" id="boton-${indice}">Eliminar</button>
-                    </div>
-                </div>`
+                $("#divMostrarPropiedades").append(
+                    `
+                    <div class="card" id="propiedad${indice}">
+                        <div class="cardBody">
+                        <h5 class="cardText">${propiedadesEnArray.tipoDeOperacion}</h5>
+                            <h5 class="cardText">${propiedadesEnArray.tipoDePropiedad}</h5>
+                            <p class="cardText">${propiedadesEnArray.ubicacion}</p>
+                            <button type="button" class="btnCard" id="boton-${indice}">Eliminar</button>
+                        </div>
+                    </div>`
+                    ) 
             }) 
         } else {
             mensajeElse.innerText = "Vuelva a ingresar los datos por favor"
