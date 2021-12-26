@@ -3,17 +3,28 @@
   box-sizing: border-box;
 }
 
+body {
+  transition: background-color 800ms ease;
+}
+
 h1 {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  background-color: #313638;
-  color: #fff;
-  height: 17vh;
+  margin: 2em;
 }
 
-#hero {
+.nav {
+  background-color: #e0dfd5;
+  color: black;
+  transition: background-color 800ms ease;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.hero {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -22,6 +33,8 @@ h1 {
   height: 60em;
   padding-top: 2em;
   height: fit-content;
+  color: black;
+  transition: background-color 800ms ease;
 }
 
 .img {
@@ -39,6 +52,7 @@ h1 {
   display: flex;
   justify-content: center;
   align-items: center;
+  transition: background-color 800ms ease;
 }
 
 .footer-text {
@@ -98,13 +112,13 @@ h1 {
   width: 6rem;
 }
 .btn1 {
-  color: white;
-  background-color: #313638;
+  color: #313638;
+  background-color: beige;
 }
 
 .btn2 {
-  color: white;
-  background-color: #313638;
+  color: #313638;
+  background-color: beige;
 }
 
 .input_container {
@@ -148,4 +162,18 @@ h1 {
 .cardText {
   font-size: 1.5rem;
   padding: 5px;
+}
+
+.darkMode {
+  background-color: #313638;
+  color: #e0dfd5;
+}
+
+.darkMode2 {
+  background-color: #01506f;
+  color: #e0dfd5;
+}
+
+.btnDarkLight {
+  margin: 3em;
 }

@@ -99,8 +99,48 @@ let imagenCasa = document.getElementById("imgPropiedad")
 title.innerHTML = "Prodigy House - Venta y Alquiler de Propiedades";
 imagenCasa.innerHTML += `<img src="./images/todd-kent-178j8tJrNlc-unsplash.jpg" style= "width: 10em">`
 
+let darkMode;
 
+if(localStorage.getItem("darkMode")) {
+    darkMode = localStorage.getItem("darkMode")
+} else {
+    darkMode = "light"
+}
 
+localStorage.setItem("darkMode", darkMode)
+
+$(() => {
+    if(localStorage.getItem("darkMode") == "dark") {
+        $("#nav").addClass("darkMode")
+        $("#section").addClass("darkMode2")
+        $("#footer").addClass("darkMode2")
+        $("#propiedades").addClass("darkMode")
+        $("#btnDark").hide()
+        $("#btnLight").show()
+    } else {
+        $("#btnLight").hide()
+    };
+
+    $("#btnLight").click(() => {
+        $("#btnDark").show()
+        $("#btnLight").hide() 
+        $("#nav").removeClass("darkMode")
+        $("#section").removeClass("darkMode2")
+        $("#footer").removeClass("darkMode2")
+        $("#propiedades").removeClass("darkMode")
+        localStorage.setItem("darkMode", "light")
+    })
+
+        $("#btnDark").click(() => {
+        $("#btnDark").hide()
+        $("#btnLight").show() 
+        $("#nav").addClass("darkMode")
+        $("#section").addClass("darkMode2")
+        $("#footer").addClass("darkMode2")
+        $("#propiedades").addClass("darkMode")
+        localStorage.setItem("darkMode", "dark")
+    })
+})
 
 
 
