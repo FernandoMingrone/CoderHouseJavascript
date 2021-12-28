@@ -142,7 +142,10 @@ $(() => {
     })
 })
 
+//ME FALTÓ ENCONTRAR UNA API DE INMOBILIARIAS...
 
-
+fetch('https://fakestoreapi.com/products')
+            .then(res=>res.json())
+            .then(json=>console.log(json))
 
 
