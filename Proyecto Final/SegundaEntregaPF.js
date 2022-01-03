@@ -10,27 +10,16 @@ class PedidoDePropiedad {
 }
 
 class Propiedad {
-    constructor(tipoDeOperacion, tipoDePropiedad, ubicacion, precio) {
-        this.tipoDeOperacion = tipoDeOperacion;
-        this.tipoDePropiedad = tipoDePropiedad;
-        this.ubicacion = ubicacion;
-        this.precio = precio;
+    constructor(title, price, thumbnail) {
+        this.tipoDePropiedad = title;
+        this.precio = price;
+        this.img = thumbnail;
     }
 }
 
-const propiedad1 = new Propiedad("Compra", "Casa", "Almagro", "$150000");
-const propiedad2 = new Propiedad("Alquiler", "PH", "Villa Urquiza", "$20000");
-const propiedad3 = new Propiedad("Compra", "Local", "Lugano", "$200000");
-const propiedad4 = new Propiedad("Alquiler", "Departamento", "Paternal", "$2540000");
-const propiedad5 = new Propiedad("Compra", "Casa", "Nuñez", "$2037000");
-const propiedad6 = new Propiedad("Alquiler", "PH", "Saavedra", "$350000");
-const propiedad7 = new Propiedad("Compra", "Terreno", "Belgrano", "$2320000");
-const propiedad8 = new Propiedad("Alquiler", "Casa", "Villa Crespo", "$320000");
-const propiedad9 = new Propiedad("Compra", "Casa", "Palermo", "$960000");
-const propiedad10 = new Propiedad("Alquiler", "Casa", "Villa Urquiza", "$60000");
+
 
 let propiedades = [];
-propiedades.push(propiedad1, propiedad2, propiedad3, propiedad4, propiedad5, propiedad6,propiedad7,propiedad8,propiedad9,propiedad10);
 
 
 
@@ -57,34 +46,59 @@ formDatos.addEventListener("submit", (e) => {
 })
 
 // DESAFÍO JQUERY
-$(() => {
-    $("#btn-propiedades").on("click", () => {
-        let propiedadesEnStorage = JSON.parse(localStorage.getItem("keyPedidos"))
-        if(divPropiedades.children.length == 0 ) {
+// $(() => {
+//     $("#btn-propiedades").on("click", () => {
+//         let propiedadesEnStorage = JSON.parse(localStorage.getItem("keyPedidos"))
+//         if(divPropiedades.children.length == 0 ) {
         
 
-            //LA IDEA SERÍA FILTRAR Y MOSTRAR LAS PROPIEDADES
-            //BUSCADAS SEGÚN LOS DATOS INGRESADOS
-            //POR AHORA NO LO PUDE HACER ASI QUE ESTOY MOSTRANDO LOS DATOS INGRESADOS
-            propiedadesEnStorage.forEach((propiedadesEnArray, indice) => {
+//             //LA IDEA SERÍA FILTRAR Y MOSTRAR LAS PROPIEDADES
+//             //BUSCADAS SEGÚN LOS DATOS INGRESADOS
+//             //POR AHORA NO LO PUDE HACER ASI QUE ESTOY MOSTRANDO LOS DATOS INGRESADOS
+//             propiedadesEnStorage.forEach((propiedadesEnArray, indice) => {
+//                 $("#divMostrarPropiedades").append(
+//                     `
+//                     <div class="card" id="propiedad${indice}">
+//                         <div class="cardBody">
+//                         <h5 class="cardText">${propiedadesEnArray.tipoDeOperacion}</h5>
+//                             <h5 class="cardText">${propiedadesEnArray.title}</h5>
+//                             <p class="cardText">${propiedadesEnArray.location}</p>
+//                             <p class="cardText">${propiedadesEnArray.price}</p>
+//                             <button type="button" class="btnCard" id="boton-${indice}">Eliminar</button>
+//                         </div>
+//                     </div>`
+//                     ) 
+//             }) 
+//         } else {
+//             mensajeElse.innerText = "Vuelva a ingresar los datos por favor"
+//         }
+
+//     })
+// })
+
+function mostrarPropiedades(){
+    // $("#btn-propiedades").empty();
+    propiedades.forEach((propiedadesEnArray, indice) => {
                 $("#divMostrarPropiedades").append(
-                    `
-                    <div class="card" id="propiedad${indice}">
-                        <div class="cardBody">
-                        <h5 class="cardText">${propiedadesEnArray.tipoDeOperacion}</h5>
-                            <h5 class="cardText">${propiedadesEnArray.tipoDePropiedad}</h5>
-                            <p class="cardText">${propiedadesEnArray.ubicacion}</p>
-                            <button type="button" class="btnCard" id="boton-${indice}">Eliminar</button>
+                    `<div class="card" style="width: 18rem;">
+                        <img class="card-img-top" src=${propiedadesEnArray.img} alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title">${propiedadesEnArray.tipoDePropiedad}</h5>
+                        </div>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">Precio: $${propiedadesEnArray.precio}</li>
+                            <li class="list-group-item">Dapibus ac facilisis in</li>
+                            <li class="list-group-item">Vestibulum at eros</li>
+                        </ul>
+                        <div class="card-body">
+                            <a href="#" class="card-link">Contactar</a>
                         </div>
                     </div>`
                     ) 
-            }) 
-        } else {
-            mensajeElse.innerText = "Vuelva a ingresar los datos por favor"
-        }
-
+        
     })
-})
+}
+
 // let botonPropiedades = document.getElementById("btn-propiedades")
 
 
@@ -97,7 +111,7 @@ let title = document.getElementById("title");
 let imagenCasa = document.getElementById("imgPropiedad")
 
 title.innerHTML = "Prodigy House - Venta y Alquiler de Propiedades";
-imagenCasa.innerHTML += `<img src="./images/todd-kent-178j8tJrNlc-unsplash.jpg" style= "width: 10em">`
+imagenCasa.innerHTML += `<img src="./images/todd-kent-178j8tJrNlc-unsplash.jpg" style= "width: 18em">`
 
 let darkMode;
 
@@ -115,6 +129,7 @@ $(() => {
         $("#section").addClass("darkMode2")
         $("#footer").addClass("darkMode2")
         $("#propiedades").addClass("darkMode")
+        $("#divMostrarPropiedades").addClass("darkModeCard")
         $("#btnDark").hide()
         $("#btnLight").show()
     } else {
@@ -138,6 +153,7 @@ $(() => {
         $("#section").addClass("darkMode2")
         $("#footer").addClass("darkMode2")
         $("#propiedades").addClass("darkMode")
+        $("#divMostrarPropiedades").addClass("darkModeCard")
         localStorage.setItem("darkMode", "dark")
     })
 })
@@ -145,16 +161,12 @@ $(() => {
 //ME FALTÓ ENCONTRAR UNA API DE INMOBILIARIAS...
 
 
-fetch("https://zillow-com1.p.rapidapi.com/locationSuggestions?q=santa%20monica", {
-	"method": "GET",
-	"headers": {
-		"x-rapidapi-host": "zillow-com1.p.rapidapi.com",
-		"x-rapidapi-key": "X1-ZWz16e62zshd6z_7zykg"
-	}
-})
-.then(response => {
-	console.log(response);
-})
-.catch(err => {
-	console.error(err);
-});
+    $.get("https://api.mercadolibre.com/sites/MLA/search?category=MLA1459", function (data) {
+        data.results.forEach(elemento => {
+            propiedades.push(new Propiedad(elemento.title, elemento.price, elemento.thumbnail))
+        })
+        console.log(data.results);
+        mostrarPropiedades();
+    })
+
+    console.log(propiedades);
