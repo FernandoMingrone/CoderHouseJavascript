@@ -1,147 +1,172 @@
 //Venta y Alquiler de propiedades
 
 
-//Yo lo que quiero es que:
-//1) el cliente me pida lo que quiere
-//2) Armar un objeto del pedido con sus propiedades
-//3) Tener una lista de propiedades para ofrecer
-//4) Compararlo con las propiedades que tengo
-//5) Ofrecer las propiedades que mejor se ajusten
-//6) Si no tengo la propiedad que quiere, le aviso que no la tengo
-
-
-
-
-
-// Nosotros tenemos una lista de propiedades hechas con la clase Propiedad
-
 class PedidoDePropiedad {
-    constructor(tipoDeOperacion) {
-        // this.tipoDePropiedad = tipoDePropiedad;
-        // this.ubicacion = ubicacion;
-        // this.precio = precio;
-        this.tipoDeOperacion = tipoDeOperacion;
-        //this.estado = estado;
-    }
-    
-    // entregarPropiedades() {
-    //     if (this.tipoDeOperacion === "Compra") {
-    //         alert("Le podemos ofrecer un" + + "en " + this.ubicacion + "que cuesta " + this.precio + "$");
-    //     }
-    // }
-}
-
-
-//3) Tener una lista de propiedades para ofrecer
-
-class Propiedad {
-    constructor(tipoDeOperacion, tipoDePropiedad, ubicacion, precio) {
+    constructor(tipoDeOperacion, tipoDePropiedad, ubicacion) {
         this.tipoDeOperacion = tipoDeOperacion;
         this.tipoDePropiedad = tipoDePropiedad;
         this.ubicacion = ubicacion;
-        this.precio = precio;
     }
 }
 
-const propiedad1 = new Propiedad("Compra", "Casa", "Almagro", "$150000");
-const propiedad2 = new Propiedad("Alquiler", "PH", "Villa Urquiza", "$20000");
+class Propiedad {
+    constructor(title, price, thumbnail) {
+        this.tipoDePropiedad = title;
+        this.precio = price;
+        this.img = thumbnail;
+    }
+}
+
+
 
 let propiedades = [];
-propiedades.push(propiedad1, propiedad2);
 
 
-//2) Armar un objeto del pedido con sus propiedades
 
-let pedido1 = new PedidoDePropiedad({tipoDeOperacion: ""});
+let pedidos = []
 
-//1) el cliente me pida lo que quiere
-// pedido1.tipoDeOperacion = prompt("¿Qué tipo de operación desea realizar? (Compra o Alquiler)");
-
-
+let datosForm = document.getElementById("formDatos")
+let divPropiedades = document.getElementById("divMostrarPropiedades")
+let mensajeElse = document.getElementById("mensaje");
 
 
 
 
+formDatos.addEventListener("submit", (e) => {
+    e.preventDefault();
+    let datosForm = new FormData(e.target);
+    let nuevoPedido = new PedidoDePropiedad(datosForm.get("operacion"),
+    datosForm.get("tipoDePropiedad"),
+    datosForm.get("ubicacion"));
+    pedidos.push(nuevoPedido);
+    console.log(pedidos);
+    localStorage.setItem("keyPedidos", JSON.stringify(pedidos));
+    formDatos.reset()
+    
+})
 
-//4) Compararlo con las propiedades que tengo
-let busqueda1 = propiedades.find(elemento => elemento.tipoDeOperacion === pedido1.tipoDeOperacion);
+// DESAFÍO JQUERY
+// $(() => {
+//     $("#btn-propiedades").on("click", () => {
+//         let propiedadesEnStorage = JSON.parse(localStorage.getItem("keyPedidos"))
+//         if(divPropiedades.children.length == 0 ) {
+        
 
-//5) Ofrecer las propiedades que mejor se ajusten
-//6) Si no tengo la propiedad que quiere, le aviso que no la tengo
-const propiedadesDom = document.getElementById("propiedades");
+//             //LA IDEA SERÍA FILTRAR Y MOSTRAR LAS PROPIEDADES
+//             //BUSCADAS SEGÚN LOS DATOS INGRESADOS
+//             //POR AHORA NO LO PUDE HACER ASI QUE ESTOY MOSTRANDO LOS DATOS INGRESADOS
+//             propiedadesEnStorage.forEach((propiedadesEnArray, indice) => {
+//                 $("#divMostrarPropiedades").append(
+//                     `
+//                     <div class="card" id="propiedad${indice}">
+//                         <div class="cardBody">
+//                         <h5 class="cardText">${propiedadesEnArray.tipoDeOperacion}</h5>
+//                             <h5 class="cardText">${propiedadesEnArray.title}</h5>
+//                             <p class="cardText">${propiedadesEnArray.location}</p>
+//                             <p class="cardText">${propiedadesEnArray.price}</p>
+//                             <button type="button" class="btnCard" id="boton-${indice}">Eliminar</button>
+//                         </div>
+//                     </div>`
+//                     ) 
+//             }) 
+//         } else {
+//             mensajeElse.innerText = "Vuelva a ingresar los datos por favor"
+//         }
+
+//     })
+// })
+
+function mostrarPropiedades(){
+    // $("#btn-propiedades").empty();
+    propiedades.forEach((propiedadesEnArray, indice) => {
+                $("#divMostrarPropiedades").append(
+                    `<div class="card" style="width: 18rem;">
+                        <img class="card-img-top" src=${propiedadesEnArray.img} alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title">${propiedadesEnArray.tipoDePropiedad}</h5>
+                        </div>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">Precio: $${propiedadesEnArray.precio}</li>
+                            <li class="list-group-item">Dapibus ac facilisis in</li>
+                            <li class="list-group-item">Vestibulum at eros</li>
+                        </ul>
+                        <div class="card-body">
+                            <a href="#" class="card-link">Contactar</a>
+                        </div>
+                    </div>`
+                    ) 
+        
+    })
+}
+
+// let botonPropiedades = document.getElementById("btn-propiedades")
 
 
-// if (busqueda1 === undefined) {
-//      propiedadesDom.innerHTML += `<p>No disponemos de la propiedadx</p>
-// } else if (busqueda1.tipoDeOperacion === pedido1.tipoDeOperacion) {
-//     propiedadesDom.innerHTML += `<div class="prueba">
-//     <h3>${busqueda1.tipoDeOperacion}</h3>
-// <p>${busqueda1.tipoDePropiedad}</p>
-// <p>${busqueda1.ubicacion}</p>
-// <p>${busqueda1.precio}</p>
-//     </div>`;
-// }
+// botonPropiedades.addEventListener("click", () => {
+// })
+
 
 
 let title = document.getElementById("title");
 let imagenCasa = document.getElementById("imgPropiedad")
 
 title.innerHTML = "Prodigy House - Venta y Alquiler de Propiedades";
-imagenCasa.innerHTML += `<img src="./images/todd-kent-178j8tJrNlc-unsplash.jpg" style= "width: 10em">`
+imagenCasa.innerHTML += `<img src="./images/todd-kent-178j8tJrNlc-unsplash.jpg" style= "width: 18em">`
 
+let darkMode;
 
-// let = ( id= 1, propiedad= "Casa", ubicacion= "Almagro", precio= 150000, tipoDeOperacion= "Compra", estado= "Disponible" );
+if(localStorage.getItem("darkMode")) {
+    darkMode = localStorage.getItem("darkMode")
+} else {
+    darkMode = "light"
+}
 
+localStorage.setItem("darkMode", darkMode)
 
+$(() => {
+    if(localStorage.getItem("darkMode") == "dark") {
+        $("#nav").addClass("darkMode")
+        $("#section").addClass("darkMode2")
+        $("#footer").addClass("darkMode2")
+        $("#propiedades").addClass("darkMode")
+        $("#divMostrarPropiedades").addClass("darkModeCard")
+        $("#btnDark").hide()
+        $("#btnLight").show()
+    } else {
+        $("#btnLight").hide()
+    };
 
+    $("#btnLight").click(() => {
+        $("#btnDark").show()
+        $("#btnLight").hide() 
+        $("#nav").removeClass("darkMode")
+        $("#section").removeClass("darkMode2")
+        $("#footer").removeClass("darkMode2")
+        $("#propiedades").removeClass("darkMode")
+        localStorage.setItem("darkMode", "light")
+    })
 
-
-
-    // alert("Le podemos ofrecer una " + busqueda1.tipoDePropiedad + " en " + busqueda1.ubicacion + " que cuesta " + busqueda1.precio + "$");
-let pedidos = []
-
-let datosForm = document.getElementById("formDatos")
-let apellido = document.getElementById("input-apellido")
- let operacion = document.getElementById("input-operacion")
-
-
-formDatos.addEventListener("submit", (e) => {
-    e.preventDefault();
-    let datosForm = new FormData(e.target);
-    console.log(datosForm.get("nombre"))
-    console.log(datosForm.get("apellido"))
-    console.log(datosForm.get("operacion"))
-    let nuevoPedido = new PedidoDePropiedad(datosForm.get("operacion"))
-    console.log(nuevoPedido)
-    pedidos.push(nuevoPedido);
-    console.log(pedidos)
-
-
+        $("#btnDark").click(() => {
+        $("#btnDark").hide()
+        $("#btnLight").show() 
+        $("#nav").addClass("darkMode")
+        $("#section").addClass("darkMode2")
+        $("#footer").addClass("darkMode2")
+        $("#propiedades").addClass("darkMode")
+        $("#divMostrarPropiedades").addClass("darkModeCard")
+        localStorage.setItem("darkMode", "dark")
+    })
 })
 
+//ME FALTÓ ENCONTRAR UNA API DE INMOBILIARIAS...
 
 
+    $.get("https://api.mercadolibre.com/sites/MLA/search?category=MLA1459", function (data) {
+        data.results.forEach(elemento => {
+            propiedades.push(new Propiedad(elemento.title, elemento.price, elemento.thumbnail))
+        })
+        console.log(data.results);
+        mostrarPropiedades();
+    })
 
-
-
-
-
-
-
-
-
-// const casa = new Propiedad("Casa", "Calle falsa 123", "1.000.000", "Venta", "Nueva");
-// const departamento = new Propiedad("Departamento", "Calle falsa 123", "500.000", "Compra", "Nuevo");
-// const localComercial = new Propiedad("Local Comercial", "Calle falsa 123", "100.000", "Alquiler", "Nuevo");
-// const PH = new Propiedad("PH", "Calle falsa 123", "100.000", "Alquiler", "Nuevo");
-// const terreno = new Propiedad("Terreno", "Calle falsa 123", "100.000", "Alquiler", "Nuevo");
-
-
-// // En base al pedido ofrecemos en base a lo que tenemos en la lista
-// let propiedades = [casa, departamento, localComercial, PH, terreno];
-
-
-
-// consultaPropierdades();
-
-// console.log(propiedad);
+    console.log(propiedades);
