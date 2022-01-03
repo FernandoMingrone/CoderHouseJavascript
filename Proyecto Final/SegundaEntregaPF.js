@@ -144,8 +144,17 @@ $(() => {
 
 //ME FALTÓ ENCONTRAR UNA API DE INMOBILIARIAS...
 
-fetch('https://fakestoreapi.com/products')
-            .then(res=>res.json())
-            .then(json=>console.log(json))
 
-
+fetch("https://zillow-com1.p.rapidapi.com/locationSuggestions?q=santa%20monica", {
+	"method": "GET",
+	"headers": {
+		"x-rapidapi-host": "zillow-com1.p.rapidapi.com",
+		"x-rapidapi-key": "X1-ZWz16e62zshd6z_7zykg"
+	}
+})
+.then(response => {
+	console.log(response);
+})
+.catch(err => {
+	console.error(err);
+});
