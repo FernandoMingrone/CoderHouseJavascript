@@ -30,7 +30,7 @@ let divPropiedades = document.getElementById("divMostrarPropiedades")
 let mensajeElse = document.getElementById("mensaje");
 
 
-
+//DESAFÍO EVENTOS
 
 formDatos.addEventListener("submit", (e) => {
     e.preventDefault();
