@@ -1,11 +1,11 @@
 class Producto {
-    constructor(nombre, marca, modelo, precio, stock, img) {
-        this.nombre = nombre;
-        this.marca = marca;
-        this.modelo = modelo;
-        this.precio = precio;
-        this.stock = stock;
+    constructor(categoria, descripcion, img, precio, nombre, stock, ) {
+        this.categoria = categoria;
+        this.descripcion = descripcion;
         this.img = img;
+        this.precio = precio;
+        this.nombre = nombre;
+        this.stock = stock;
         this.cant = 1;
     }
 }
